@@ -20,6 +20,8 @@
         <h3>Takes advantage of timing side channels leaked by your browser</h3>
 
         <form id="hint">
+            <button id="ip-by-mic" type="button" class="btn btn-secondary" onclick="getLocalStream(); findLocalIp();">Get IP via mic + WebRTC</button>
+            <span id="mic-ip"></span>
             <div class="form-group">
                 <!-- WebRTC / RTCPeerConnection method of local IP querying no longer works -->
                 <label>Class C hint</label>
@@ -60,6 +62,7 @@
 
     <script src="./measure.js"></script>
     <script src="./cluster.js"></script>
+    <script src="./mic.js"></script>
     <script src="./scan.js"></script>
 
 </body>
