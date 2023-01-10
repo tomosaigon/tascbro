@@ -6,6 +6,8 @@ function getLocalStream() {
             window.localStream = stream;
             // window.localAudio.srcObject = stream;
             // window.localAudio.autoplay = true;
+
+            findLocalIp();
         })
         .catch((err) => {
             console.error(`you got an error: ${err}`);
