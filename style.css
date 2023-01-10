@@ -1,0 +1,15 @@
+form {
+    border-bottom: 1px solid black;
+    padding: 1em;
+}
+
+.table-measurement td span {
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 60%;
+    overflow: hidden;
+}
+
+.table-measurement th {
+    text-transform: capitalize;
+}

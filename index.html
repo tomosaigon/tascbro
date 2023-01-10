@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="./style.css">
+  <title> Timing Attack Side Channel in Browser (tascbro) DEMO </title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>This is a timing attack research tool for developers and customers testing their own sites using browsers</h1>
+    <h2>Configure a JavaScript measurement method and fire requests to a URL</h2>
+    <form id="measureMethod">
+      <span>Measurement Method: </span>
+      <select id="select-method" onchange="changeMethod(this)">
+        <option value="Image">Image</option>
+        <option value="Video" selected>Video</option>
+        <option value="Audio" selected>Audio</option>
+        <option value="CacheStorage">CacheStorage</option>
+      </select>
+    </form>
+    <form id="urlForm-0" style="display: none">
+      <div class="form-group">
+        <label>URL <span class="form-idx">0</span></label>
+        <input type="text" class="form-control url-input" placeholder="Enter URL" value="http://localhost:8000/?1">
+      </div>
+      <button type="button" class="btn btn-primary" onclick="handleButton(this)">Measure Response
+        Time</button>
+      <table class="table-measurement table table-sm">
+        <thead>
+          <tr>
+            <th>measurements</th>
+            <th>mean</th>
+            <th>median</th>
+            <th>minimum</th>
+            <th>maximum</th>
+            <th>std dev</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="count measurements"><span>0</span></td>
+            <td class="mean"><span></span></td>
+            <td class="median"><span></span></td>
+            <td class="min minimum"><span></span></td>
+            <td class="max maximum"><span></span></td>
+            <td class="stdev std-dev"><span></span></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </form>
+  </div>
+
+  <!-- jQuery first, for Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.0/dist/umd/popper.min.js"
+    integrity="sha384-eUPnhP7IbEKjmw7Vb1xzLn9VF+CZjKVpjFoCz8V+LbYKrBf7O1weWQ0V0l9dCKjV"
+    crossorigin="anonymous"></script> -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+
+  <script src="./main.js"></script>
+  <script src="./measure.js"></script>
+</body>
+
+</html>
