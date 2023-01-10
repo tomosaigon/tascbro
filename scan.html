@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./style.css">
+    <title> Scan Local Network (tascbro) DEMO </title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Scan your local network</h1>
+        <h3>Takes advantage of timing side channels leaked by your browser</h3>
+
+        <form id="hint">
+            <div class="form-group">
+                <!-- WebRTC / RTCPeerConnection method of local IP querying no longer works -->
+                <label>Class C hint</label>
+                <input type="text" class="form-control " placeholder="Enter /24"
+                    value="192.168.1">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="handleButton(this)">SCAN</button>
+            <button type="button" class="btn btn-secondary" onclick="hideBoringIps()">Hide Boring IPs</button>
+            <table id="hosts" class="table-hosts table table-sm">
+                <thead>
+                    <tr>
+                        <th>IP Address</th>
+                        <th>Centroid</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="ip"><span></span></td>
+                        <td class="ip"><span></span></td>
+                        <td class="ip"><span></span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </form>
+    </div>
+
+    <!-- jQuery first, for Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.0/dist/umd/popper.min.js"
+    integrity="sha384-eUPnhP7IbEKjmw7Vb1xzLn9VF+CZjKVpjFoCz8V+LbYKrBf7O1weWQ0V0l9dCKjV"
+    crossorigin="anonymous"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <script src="./measure.js"></script>
+    <script src="./cluster.js"></script>
+    <script src="./scan.js"></script>
+    
+</body>
+
+</html>
