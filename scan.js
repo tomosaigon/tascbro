@@ -1,13 +1,28 @@
+let isScanning = false;
 const ipTimes = {};
 const timesIp = {};
 const times = [];
 const NUM_CLUSTS = 3;
 const NUM_ITERS = 750;
-let C = '192.168.1';
+let C = '192.168.0';
 let fn = getImageMeasurement;
 
 function setC(newC) {
     C = newC;
+}
+function validateSubnet() {
+    let subnet = document.getElementById('subnet').value;
+    if (subnet.split('.').length == 3) {
+        subnet.split('.').forEach(num => {
+            let _num = parseInt(num);
+            if (_num != num || _num < 0 || _num > 255) {
+                throw "Invalid octet " + num;
+            }
+        });
+        setC(subnet.split('.').join('.'));
+        return;
+    }
+    throw "Invalid subnet";
 }
 
 function generateClusters() {
@@ -46,6 +61,11 @@ function hideBoringIps() {
     }
 }
 async function handleButton(_e) {
+    isScanning = true;
+    document.getElementById('hint').getElementsByClassName('btn-primary')[0].disabled = true;
+    document.getElementById('hint').getElementsByClassName('btn-primary')[0].innerHTML = "SCANNING...";
+
+    validateSubnet();
     for (let i = 1; i < 255; i++) {
         let ip = C + '.' + i;
         let url = 'http://' + ip + '/';
@@ -60,7 +80,7 @@ async function handleButton(_e) {
             }
             times.push(t);
         })
-        await (new Promise(resolve => setTimeout(resolve, 400)));
+        await (new Promise(resolve => setTimeout(resolve, 500)));
     }
     console.log("wait 3s for requests to finish");
     await (new Promise(resolve => setTimeout(resolve, 3000)));
@@ -68,6 +88,9 @@ async function handleButton(_e) {
     generateClusters();
     generateColoredIps();
     render();
+    document.getElementById('hint').getElementsByClassName('btn-primary')[0].innerHTML = "SCAN AGAIN";
+    document.getElementById('hint').getElementsByClassName('btn-primary')[0].disabled = false;
+    document.getElementById('hint').getElementsByClassName('btn-secondary')[0].disabled = false;
 }
 
 

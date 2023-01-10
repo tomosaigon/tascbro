@@ -23,11 +23,10 @@
             <div class="form-group">
                 <!-- WebRTC / RTCPeerConnection method of local IP querying no longer works -->
                 <label>Class C hint</label>
-                <input type="text" class="form-control " placeholder="Enter /24"
-                    value="192.168.1">
+                <input id="subnet" type="text" class="form-control " placeholder="Enter /24 (3 octets)" value="192.168.0">
             </div>
             <button type="button" class="btn btn-primary" onclick="handleButton(this)">SCAN</button>
-            <button type="button" class="btn btn-secondary" onclick="hideBoringIps()">Hide Boring IPs</button>
+            <button type="button" class="btn btn-secondary" onclick="hideBoringIps()" disabled>Hide Boring IPs</button>
             <table id="hosts" class="table-hosts table table-sm">
                 <thead>
                     <tr>
@@ -62,7 +61,7 @@
     <script src="./measure.js"></script>
     <script src="./cluster.js"></script>
     <script src="./scan.js"></script>
-    
+
 </body>
 
 </html>
