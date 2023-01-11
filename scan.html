@@ -16,24 +16,33 @@
 
 <body>
     <div class="container">
+        <div class="card" style="
+        margin: 2em;
+        padding: 2em;
+    ">
+            <div>Before scanning, let me guess your local IP (enable microphone)</div>
+            <button id="ip-by-mic" type="button" class="btn btn-secondary" onclick="getLocalStream()">Get IP via mic +
+                WebRTC</button>
+            <span id="mic-ip"></span>
+        </div>
         <h1>Scan your local network</h1>
         <h3>Takes advantage of timing side channels leaked by your browser</h3>
 
         <form id="hint">
-            <button id="ip-by-mic" type="button" class="btn btn-secondary" onclick="getLocalStream()">Get IP via mic + WebRTC</button>
-            <span id="mic-ip"></span>
             <div class="form-group">
                 <!-- WebRTC / RTCPeerConnection method of local IP querying no longer works -->
-                <label>Class C hint</label>
-                <input id="subnet" type="text" class="form-control " placeholder="Enter /24 (3 octets)" value="192.168.0">
+                <label>Give me a hint - confirm the Class C subnet to scan (attacker could deduce from IP above)</label>
+                <input id="subnet" type="text" class="form-control " placeholder="Enter /24 (3 octets)"
+                    value="192.168.0">
             </div>
+            <div>Note: scanning takes 2-3 minutes and results are clustered into 3 groups using K-means</div>
             <button type="button" class="btn btn-primary" onclick="handleButton(this)">SCAN</button>
             <button type="button" class="btn btn-secondary" onclick="hideBoringIps()" disabled>Hide Boring IPs</button>
             <table id="hosts" class="table-hosts table table-sm">
                 <thead>
                     <tr>
                         <th>IP Address</th>
-                        <th>Centroid</th>
+                        <th>Cluster</th>
                         <th>Time</th>
                     </tr>
                 </thead>
